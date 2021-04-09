@@ -10,17 +10,17 @@ let failedUrls = [];
 
 async function downloadFile({ absPath, url }) {
   const file = createWriteStream(absPath);
-  get(url, function (response) {
+  get(url, (response) => {
     if (response.statusCode === 200) {
       response
-        .on("data", function (chunk) {
+        .on("data", (chunk) => {
           file.write(chunk);
         })
-        .on("end", function () {
+        .on("end", () => {
           file.end();
         });
     }
-  }).on("error", function (err) {
+  }).on("error", (err) => {
     console.error(err + " ---> " + url);
   });
 }
@@ -86,9 +86,7 @@ async function songDownloder({ url, reqCount, browser, delay }) {
   if (songLink === "link request overdue!") {
     console.error(`for url ${url} : get request overdue, droppping download!!`);
     if (reqCount === 4) {
-      console.error(
-        `for url ${url} : request count exceeded limit, cannot fetch song!!`
-      );
+      console.error(`for url ${url} : request exceeded limit, cannot fetch!!`);
       totallyFailed.push(url);
     } else {
       console.error(`url ${url} queued for retry!!`);
@@ -148,7 +146,7 @@ async function playlistDownloader() {
     process.exit(0);
   }
   const browser = await puppeteer.launch({
-    headless: true,
+    // headless: true,
     args: ["--disable-notifications"],
     // headless: false,
     // defaultViewport: false,
