@@ -1,0 +1,17 @@
+{
+  "name": "youtube-automation",
+  "version": "1.0.0",
+  "description": "youtube media downlaoder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yash Saxena <yashsaxena962000@gmail.com> (https://yashsaxena9.github.io/)",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "*",
+    "https": "^1.0.0",
+    "path": "^0.12.7",
+    "puppeteer": "^8.0.0"
+  }
+}
