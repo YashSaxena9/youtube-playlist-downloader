@@ -149,6 +149,7 @@ async function playlistDownloader() {
   }
   const browser = await puppeteer.launch({
     headless: true,
+    args: ["--disable-notifications"],
     // headless: false,
     // defaultViewport: false,
   });
@@ -184,7 +185,10 @@ async function main() {
     await playlistDownloader();
     console.log("song(s) downloaded!!");
   } else {
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: ["--disable-notifications"],
+    });
     await songDownloder({
       url,
       browser,
